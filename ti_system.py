@@ -4,7 +4,7 @@ a system api for calculator.
 """
 #COPYRIGHT Texas Instruments Inc. 2025
 #USING DEDICATED LICENSE.
-from keyboard import *
+import keyboard
 import sys
 import os
 import json
@@ -40,26 +40,22 @@ def ticks_cpu():
 
 def get_platform():
     """get platform name"""
-    sys.version()
+    return sys.version()
 
-_last_key = None
+_excluded_keys = {"up", "down", "left", "right"}
+_pressed_keys = set()
 
 def get_key():
-    '''get last key pressed'''
-    global _last_key
+    global _pressed_keys
+    while True:
+        event = keyboard.read_event()
+        
+        if event.event_type == keyboard.KEY_DOWN:
+            key = event.name
+            if key not in _excluded_keys and key not in _pressed_keys:
+                _pressed_keys.add(key)
+                return key
 
-    k = read_key()
-
-    arrow_keys = ("up", "down", "left", "right")
-
-    if k in arrow_keys:
-        return k
-
-    if k and k != _last_key:
-        _last_key = k
-        return k
-
-    elif not k:
-        _last_key = None
-
-    return None
+        elif event.event_type == keyboard.KEY_UP:
+            key = event.name
+            _pressed_keys.discard(key)
