@@ -1,6 +1,5 @@
 """
-Originally on Ti Nspire CX II Calculator, this file is for cpython on computer.
-a drawing lib, support for drawing lines, circles, rectangles, and text.
+Originally on Ti Nspire CX II Calculator, this file is for micropython lib for cpython.
 """
 #COPYRIGHT Texas Instruments Inc. 2025
 #USING DEDICATED LICENSE.

@@ -9,7 +9,7 @@ from time import sleep
 
 root = tk.Tk()
 root.title("Running...")
-canvas = tk.Canvas(root, width=320, height=240, bg="white")
+canvas = tk.Canvas(root, width=318, height=212, bg="white")
 canvas.pack()
 
 current_color = "#000000"
