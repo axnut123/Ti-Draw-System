@@ -43,7 +43,7 @@ def get_mouse():
 
 def get_platform():
     """get platform name"""
-    return sys.version()
+    return "pc"
 
 _excluded_keys = {"up", "down", "left", "right"}
 _pressed_keys = set()
